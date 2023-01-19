@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class WebService extends ChangeNotifier {
   final String _baseUrl = 'https://jsonplaceholder.typicode.com';
-  final List<User> users = [];
+  List<User> users = [];
   bool isLoading = true;
   late Box<User> userStorage;
   WebService() {
@@ -25,14 +25,13 @@ class WebService extends ChangeNotifier {
 
         for (Map<String, dynamic> userRaw in usersRawList) {
           final User user = User.fromMap(userRaw);
+          print(user);
           userStorage.put(user.id, user);
         }
-        userStorage.values.toList().forEach((element) {
-          print(element.name);
-        });
       } else {
         throw Exception('Failed to load ');
       }
     }
+    users = userStorage.values.toList();
   }
 }
