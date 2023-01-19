@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:prueba_tecnica_ceiba/models/user.dart';
 import 'package:prueba_tecnica_ceiba/provider/web_service.dart';
 
-void main() {
+Future<void> main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(UserAdapter());
+  Box box = await Hive.openBox<User>('users');
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<WebService>(
