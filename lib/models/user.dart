@@ -1,15 +1,19 @@
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+part 'user.g.dart';
+
+@HiveType(typeId: 0)
 class User {
   User({
-    required this.id,
-    required this.name,
-    required this.username,
-    required this.email,
-    required this.address,
-    required this.phone,
-    required this.website,
-    required this.company,
+    @HiveField(0) required this.id,
+    @HiveField(1) required this.name,
+    @HiveField(2) required this.username,
+    @HiveField(3) required this.email,
+    @HiveField(4) required this.address,
+    @HiveField(5) required this.phone,
+    @HiveField(6) required this.website,
+    @HiveField(7) required this.company,
   });
 
   final int id;
@@ -48,13 +52,14 @@ class User {
       };
 }
 
+@HiveType(typeId: 1)
 class Address {
   Address({
-    required this.street,
-    required this.suite,
-    required this.city,
-    required this.zipcode,
-    required this.geo,
+    @HiveField(0) required this.street,
+    @HiveField(1) required this.suite,
+    @HiveField(2) required this.city,
+    @HiveField(3) required this.zipcode,
+    @HiveField(4) required this.geo,
   });
 
   final String street;
@@ -84,10 +89,11 @@ class Address {
       };
 }
 
+@HiveType(typeId: 2)
 class Geo {
   Geo({
-    required this.lat,
-    required this.lng,
+    @HiveField(0) required this.lat,
+    @HiveField(1) required this.lng,
   });
 
   final String lat;
@@ -108,11 +114,12 @@ class Geo {
       };
 }
 
+@HiveType(typeId: 3)
 class Company {
   Company({
-    required this.name,
-    required this.catchPhrase,
-    required this.bs,
+    @HiveField(0) required this.name,
+    @HiveField(1) required this.catchPhrase,
+    @HiveField(2) required this.bs,
   });
 
   final String name;
