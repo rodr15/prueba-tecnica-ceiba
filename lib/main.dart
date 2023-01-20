@@ -6,6 +6,7 @@ import 'package:prueba_tecnica_ceiba/models/user.dart';
 import 'package:prueba_tecnica_ceiba/pages/user_details.dart';
 import 'package:prueba_tecnica_ceiba/pages/users_page.dart';
 import 'package:prueba_tecnica_ceiba/provider/web_service.dart';
+import 'package:prueba_tecnica_ceiba/theme/theme.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
@@ -36,9 +37,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Prueba de Ingreso',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: CustomTheme().customTheme,
       initialRoute: 'Home',
       routes: {
         'Home': (_) => const UsersPage(),

@@ -18,7 +18,6 @@ class UsersPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Prueba de ingreso'),
-        backgroundColor: Colors.green,
         actions: [
           IconButton(
               onPressed: () => showSearch(

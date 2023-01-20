@@ -43,26 +43,23 @@ class _UserCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               _CardInformation(user: user),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                ),
-                onPressed: (() {
-                  final List<Publications> publications =
-                      Provider.of<WebService>(context, listen: false)
-                          .FilterPublications(user.id);
-                  Navigator.pushNamed(
-                    context,
-                    'Details',
-                    arguments: {'user': user, 'publications': publications},
-                  );
-                }),
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(),
+                  onPressed: (() {
+                    final List<Publications> publications =
+                        Provider.of<WebService>(context, listen: false)
+                            .FilterPublications(user.id);
+                    Navigator.pushNamed(
+                      context,
+                      'Details',
+                      arguments: {'user': user, 'publications': publications},
+                    );
+                  }),
                   child: const Text(
                     'VER PUBLICACIONES',
-                    style: TextStyle(color: Colors.green, fontSize: 15),
+                    style: TextStyle(fontSize: 15),
                   ),
                 ),
               ),
@@ -91,23 +88,22 @@ class _CardInformation extends StatelessWidget {
         children: [
           Text(
             user.name,
-            style: const TextStyle(color: Colors.green, fontSize: 20),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
+          const Divider(),
           Row(
             children: [
-              const Icon(
-                Icons.phone,
-                color: Colors.green,
-              ),
+              const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Icon(Icons.phone)),
               Text(user.phone),
             ],
           ),
           Row(
             children: [
-              const Icon(
-                Icons.email,
-                color: Colors.green,
-              ),
+              const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Icon(Icons.email)),
               Text(user.email),
             ],
           ),

@@ -27,6 +27,7 @@ class UserDetails extends StatelessWidget {
         child: Column(
           children: [
             _PersonalInformation(user: user),
+            const Divider(),
             _Publications(publications: publications)
           ],
         ),
@@ -76,11 +77,25 @@ class _PublicationsState extends State<_Publications> {
               isExpanded: item.expanded,
               headerBuilder: ((context, isExpanded) {
                 return ListTile(
-                  title: Text(item.title),
+                  title: Text(
+                    item.title,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                        fontWeight:
+                            isExpanded ? FontWeight.bold : FontWeight.normal),
+                  ),
                 );
               }),
-              body: ListTile(
-                subtitle: Text(item.body),
+              body: Column(
+                children: [
+                  const Divider(),
+                  ListTile(
+                    title: Text(
+                      item.body,
+                      textAlign: TextAlign.justify,
+                    ),
+                  ),
+                ],
               ));
         }).toList(),
       ),
@@ -106,7 +121,7 @@ class _PersonalInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20),
+      margin: const EdgeInsets.symmetric(vertical: 20),
       height: 100,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -114,27 +129,30 @@ class _PersonalInformation extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 39,
-            child: Text(user.name.substring(0, 3)),
-          ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  user.name,
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  user.phone,
-                  style: TextStyle(color: Colors.black54),
-                ),
-                Text(
-                  user.email,
-                  style: TextStyle(color: Colors.black54),
-                ),
-              ],
+            backgroundColor: Colors.green,
+            child: Text(
+              user.name.substring(0, 3),
+              style: const TextStyle(color: Colors.white),
             ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                user.name,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                user.phone,
+                style: const TextStyle(color: Colors.black54),
+              ),
+              Text(
+                user.email,
+                style: const TextStyle(color: Colors.black54),
+              ),
+            ],
           ),
         ],
       ),
