@@ -6,7 +6,6 @@ part 'user.g.dart';
 @HiveType(typeId: 0)
 class User {
   User({
-
     required this.id,
     required this.name,
     required this.username,
@@ -32,7 +31,6 @@ class User {
   @HiveField(6)
   final String website;
   @HiveField(7)
-
   final Company company;
 
   factory User.fromJson(String str) => User.fromMap(json.decode(str));
@@ -65,7 +63,6 @@ class User {
 @HiveType(typeId: 1)
 class Address {
   Address({
-
     required this.street,
     required this.suite,
     required this.city,
@@ -82,7 +79,6 @@ class Address {
   @HiveField(3)
   final String zipcode;
   @HiveField(4)
-
   final Geo geo;
 
   factory Address.fromJson(String str) => Address.fromMap(json.decode(str));
@@ -109,7 +105,6 @@ class Address {
 @HiveType(typeId: 2)
 class Geo {
   Geo({
-
     required this.lat,
     required this.lng,
   });
@@ -137,7 +132,6 @@ class Geo {
 @HiveType(typeId: 3)
 class Company {
   Company({
-
     required this.name,
     required this.catchPhrase,
     required this.bs,

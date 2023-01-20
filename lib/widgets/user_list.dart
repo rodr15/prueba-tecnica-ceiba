@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../models/user.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
+import 'package:prueba_tecnica_ceiba/models/publications.dart';
 import 'package:prueba_tecnica_ceiba/models/user.dart';
 import 'package:prueba_tecnica_ceiba/provider/web_service.dart';
-import 'package:prueba_tecnica_ceiba/search/search_delegate.dart';
-import 'package:prueba_tecnica_ceiba/widgets/user_list.dart';
 
 class UserList extends StatelessWidget {
   const UserList({
@@ -50,12 +43,27 @@ class _UserCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               _CardInformation(user: user),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: const Text(
-                  'VER PUBLICACIONES',
-                  style: TextStyle(color: Colors.green, fontSize: 15),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                ),
+                onPressed: (() {
+                  final List<Publications> publications =
+                      Provider.of<WebService>(context, listen: false)
+                          .FilterPublications(user.id);
+                  Navigator.pushNamed(
+                    context,
+                    'Details',
+                    arguments: {'user': user, 'publications': publications},
+                  );
+                }),
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  child: const Text(
+                    'VER PUBLICACIONES',
+                    style: TextStyle(color: Colors.green, fontSize: 15),
+                  ),
                 ),
               ),
             ],

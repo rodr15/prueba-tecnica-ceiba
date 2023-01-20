@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:prueba_tecnica_ceiba/models/publications.dart';
 import 'package:prueba_tecnica_ceiba/models/user.dart';
+import 'package:prueba_tecnica_ceiba/pages/user_details.dart';
 import 'package:prueba_tecnica_ceiba/pages/users_page.dart';
 import 'package:prueba_tecnica_ceiba/provider/web_service.dart';
 
@@ -11,8 +13,10 @@ Future<void> main() async {
   Hive.registerAdapter(AddressAdapter());
   Hive.registerAdapter(GeoAdapter());
   Hive.registerAdapter(CompanyAdapter());
+  Hive.registerAdapter(PublicationsAdapter());
 
-  Box box = await Hive.openBox<User>('users');
+  Box boxUsers = await Hive.openBox<User>('users');
+  Box boxPublications = await Hive.openBox<Publications>('publications');
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<WebService>(
@@ -35,7 +39,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const UsersPage(),
+      initialRoute: 'Home',
+      routes: {
+        'Home': (_) => const UsersPage(),
+        'Details': (_) => const UserDetails(),
+      },
     );
   }
 }

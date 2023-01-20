@@ -5,7 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:prueba_tecnica_ceiba/models/user.dart';
 import 'package:prueba_tecnica_ceiba/provider/web_service.dart';
 import 'package:prueba_tecnica_ceiba/search/search_delegate.dart';
-import 'package:prueba_tecnica_ceiba/widgets/user_card.dart';
+
+import '../widgets/user_list.dart';
 
 class UsersPage extends StatelessWidget {
   const UsersPage({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class UsersPage extends StatelessWidget {
               icon: const Icon(Icons.search))
         ],
       ),
-      body: UserList(users: users),
+      body: SafeArea(child: UserList(users: users)),
     );
   }
 }

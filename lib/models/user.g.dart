@@ -17,7 +17,6 @@ class UserAdapter extends TypeAdapter<User> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return User(
-
       id: fields[0] as int,
       name: fields[1] as String,
       username: fields[2] as String,
@@ -27,12 +26,10 @@ class UserAdapter extends TypeAdapter<User> {
       website: fields[6] as String,
       company: fields[7] as Company,
     );
-
   }
 
   @override
   void write(BinaryWriter writer, User obj) {
-
     writer
       ..writeByte(8)
       ..writeByte(0)
@@ -51,7 +48,6 @@ class UserAdapter extends TypeAdapter<User> {
       ..write(obj.website)
       ..writeByte(7)
       ..write(obj.company);
-
   }
 
   @override
@@ -76,19 +72,16 @@ class AddressAdapter extends TypeAdapter<Address> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Address(
-
       street: fields[0] as String,
       suite: fields[1] as String,
       city: fields[2] as String,
       zipcode: fields[3] as String,
       geo: fields[4] as Geo,
     );
-
   }
 
   @override
   void write(BinaryWriter writer, Address obj) {
-
     writer
       ..writeByte(5)
       ..writeByte(0)
@@ -101,7 +94,6 @@ class AddressAdapter extends TypeAdapter<Address> {
       ..write(obj.zipcode)
       ..writeByte(4)
       ..write(obj.geo);
-
   }
 
   @override
@@ -125,7 +117,6 @@ class GeoAdapter extends TypeAdapter<Geo> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-
     return Geo(
       lat: fields[0] as String,
       lng: fields[1] as String,
@@ -134,7 +125,6 @@ class GeoAdapter extends TypeAdapter<Geo> {
 
   @override
   void write(BinaryWriter writer, Geo obj) {
-
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -164,18 +154,15 @@ class CompanyAdapter extends TypeAdapter<Company> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-
     return Company(
       name: fields[0] as String,
       catchPhrase: fields[1] as String,
       bs: fields[2] as String,
     );
-
   }
 
   @override
   void write(BinaryWriter writer, Company obj) {
-
     writer
       ..writeByte(3)
       ..writeByte(0)
