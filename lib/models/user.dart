@@ -6,23 +6,31 @@ part 'user.g.dart';
 @HiveType(typeId: 0)
 class User {
   User({
-    @HiveField(0) required this.id,
-    @HiveField(1) required this.name,
-    @HiveField(2) required this.username,
-    @HiveField(3) required this.email,
-    @HiveField(4) required this.address,
-    @HiveField(5) required this.phone,
-    @HiveField(6) required this.website,
-    @HiveField(7) required this.company,
+    required this.id,
+    required this.name,
+    required this.username,
+    required this.email,
+    required this.address,
+    required this.phone,
+    required this.website,
+    required this.company,
   });
 
+  @HiveField(0)
   final int id;
+  @HiveField(1)
   final String name;
+  @HiveField(2)
   final String username;
+  @HiveField(3)
   final String email;
+  @HiveField(4)
   final Address address;
+  @HiveField(5)
   final String phone;
+  @HiveField(6)
   final String website;
+  @HiveField(7)
   final Company company;
 
   factory User.fromJson(String str) => User.fromMap(json.decode(str));
@@ -55,17 +63,22 @@ class User {
 @HiveType(typeId: 1)
 class Address {
   Address({
-    @HiveField(0) required this.street,
-    @HiveField(1) required this.suite,
-    @HiveField(2) required this.city,
-    @HiveField(3) required this.zipcode,
-    @HiveField(4) required this.geo,
+    required this.street,
+    required this.suite,
+    required this.city,
+    required this.zipcode,
+    required this.geo,
   });
 
+  @HiveField(0)
   final String street;
+  @HiveField(1)
   final String suite;
+  @HiveField(2)
   final String city;
+  @HiveField(3)
   final String zipcode;
+  @HiveField(4)
   final Geo geo;
 
   factory Address.fromJson(String str) => Address.fromMap(json.decode(str));
@@ -92,11 +105,13 @@ class Address {
 @HiveType(typeId: 2)
 class Geo {
   Geo({
-    @HiveField(0) required this.lat,
-    @HiveField(1) required this.lng,
+    required this.lat,
+    required this.lng,
   });
 
+  @HiveField(0)
   final String lat;
+  @HiveField(1)
   final String lng;
 
   factory Geo.fromJson(String str) => Geo.fromMap(json.decode(str));
@@ -117,13 +132,16 @@ class Geo {
 @HiveType(typeId: 3)
 class Company {
   Company({
-    @HiveField(0) required this.name,
-    @HiveField(1) required this.catchPhrase,
-    @HiveField(2) required this.bs,
+    required this.name,
+    required this.catchPhrase,
+    required this.bs,
   });
 
+  @HiveField(0)
   final String name;
+  @HiveField(1)
   final String catchPhrase;
+  @HiveField(2)
   final String bs;
 
   factory Company.fromJson(String str) => Company.fromMap(json.decode(str));
