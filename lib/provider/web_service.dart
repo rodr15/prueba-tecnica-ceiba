@@ -22,7 +22,6 @@ class WebService extends ChangeNotifier {
   Future _loadUsers() async {
     userStorage = Hive.box<User>('users');
     if (userStorage.isEmpty) {
-
       final usersResponse = await http.get(Uri.parse('$_baseUrl/users'));
       if (usersResponse.statusCode == 200) {
         List usersRawList = jsonDecode(usersResponse.body);
@@ -37,5 +36,15 @@ class WebService extends ChangeNotifier {
       }
     }
     users = userStorage.values.toList();
+  }
+
+  String capitalize(String s) =>
+      s.isEmpty ? '' : s[0].toUpperCase() + s.substring(1).toLowerCase();
+
+  List<User> FilterUsers(String query) {
+    List<User> filteredUsers = userStorage.values
+        .where((user) => user.name.contains(capitalize(query)))
+        .toList();
+    return filteredUsers;
   }
 }
