@@ -22,7 +22,7 @@ class WebService extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future _loadUsers() async {
+  _loadUsers() async {
     userStorage = Hive.box<User>('users');
     if (userStorage.isEmpty) {
       final usersResponse = await http.get(Uri.parse('$_baseUrl/users'));
@@ -38,9 +38,10 @@ class WebService extends ChangeNotifier {
       }
     }
     users = userStorage.values.toList();
+    notifyListeners();
   }
 
-  Future _loadPublications() async {
+  _loadPublications() async {
     publicationsStorage = Hive.box<Publications>('publications');
     if (publicationsStorage.isEmpty) {
       final publicationsResponse = await http.get(Uri.parse('$_baseUrl/posts'));
@@ -57,6 +58,7 @@ class WebService extends ChangeNotifier {
       }
     }
     publications = publicationsStorage.values.toList();
+    notifyListeners();
   }
 
   String capitalize(String s) =>

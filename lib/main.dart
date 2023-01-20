@@ -9,6 +9,7 @@ import 'package:prueba_tecnica_ceiba/provider/web_service.dart';
 import 'package:prueba_tecnica_ceiba/theme/theme.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(UserAdapter());
   Hive.registerAdapter(AddressAdapter());
@@ -18,15 +19,17 @@ Future<void> main() async {
 
   Box boxUsers = await Hive.openBox<User>('users');
   Box boxPublications = await Hive.openBox<Publications>('publications');
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider<WebService>(
-        create: (_) => WebService(),
-        lazy: false,
-      )
-    ],
-    child: const MyApp(),
-  ));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<WebService>(
+          create: (_) => WebService(),
+          lazy: false,
+        )
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
