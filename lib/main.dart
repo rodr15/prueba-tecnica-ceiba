@@ -11,6 +11,7 @@ Future<void> main() async {
   Hive.registerAdapter(AddressAdapter());
   Hive.registerAdapter(GeoAdapter());
   Hive.registerAdapter(CompanyAdapter());
+
   Box box = await Hive.openBox<User>('users');
   runApp(MultiProvider(
     providers: [
