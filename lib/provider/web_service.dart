@@ -39,7 +39,7 @@ class WebService extends ChangeNotifier {
   }
 
   String capitalize(String s) =>
-      s[0].toUpperCase() + s.substring(1).toLowerCase();
+      s.isEmpty ? '' : s[0].toUpperCase() + s.substring(1).toLowerCase();
 
   List<User> FilterUsers(String query) {
     List<User> filteredUsers = userStorage.values

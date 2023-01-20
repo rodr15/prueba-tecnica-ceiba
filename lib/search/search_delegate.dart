@@ -27,30 +27,44 @@ class UserSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
-    return Text('buildResults');
+    final WebService webService = Provider.of<WebService>(context);
+    List<User> users = webService.FilterUsers(query);
+    // TODO: implement buildSuggestions
+    if (query.isEmpty || users.isEmpty) {
+      return _empty;
+    }
+    return UserList(users: users);
   }
 
-  final Widget _empty = const SizedBox(
+  final Widget _empty = SizedBox(
     child: Center(
-      child: Icon(
-        Icons.people,
-        color: Colors.black38,
-        size: 200,
+      child: Column(
+        children: const [
+          Icon(
+            Icons.people,
+            color: Colors.black38,
+            size: 200,
+          ),
+          Text(
+            'List is empty',
+            style: TextStyle(
+              fontSize: 25,
+              color: Colors.black38,
+            ),
+          )
+        ],
       ),
     ),
   );
   @override
   Widget buildSuggestions(BuildContext context) {
-    // TODO: implement buildSuggestions
-    if (query.isEmpty) {
-      return _empty;
-    }
     final WebService webService = Provider.of<WebService>(context);
     List<User> users = webService.FilterUsers(query);
-    return ListView.builder(
-      itemCount: users.length,
-      itemBuilder: ((context, index) => UserCard(user: users[index])),
-    );
+    // TODO: implement buildSuggestions
+    if (query.isEmpty || users.isEmpty) {
+      return _empty;
+    }
+
+    return UserList(users: users);
   }
 }

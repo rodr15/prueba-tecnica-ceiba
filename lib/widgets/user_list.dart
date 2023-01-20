@@ -2,8 +2,36 @@ import 'package:flutter/material.dart';
 
 import '../models/user.dart';
 
-class UserCard extends StatelessWidget {
-  const UserCard({
+import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+import 'package:prueba_tecnica_ceiba/models/user.dart';
+import 'package:prueba_tecnica_ceiba/provider/web_service.dart';
+import 'package:prueba_tecnica_ceiba/search/search_delegate.dart';
+import 'package:prueba_tecnica_ceiba/widgets/user_list.dart';
+
+class UserList extends StatelessWidget {
+  const UserList({
+    Key? key,
+    required this.users,
+  }) : super(key: key);
+
+  final List<User> users;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: users.length,
+      itemBuilder: (context, index) {
+        return _UserCard(user: users[index]);
+      },
+    );
+  }
+}
+
+class _UserCard extends StatelessWidget {
+  const _UserCard({
     Key? key,
     required this.user,
   }) : super(key: key);
@@ -21,7 +49,7 @@ class UserCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              CardInformation(user: user),
+              _CardInformation(user: user),
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -38,8 +66,8 @@ class UserCard extends StatelessWidget {
   }
 }
 
-class CardInformation extends StatelessWidget {
-  const CardInformation({
+class _CardInformation extends StatelessWidget {
+  const _CardInformation({
     Key? key,
     required this.user,
   }) : super(key: key);

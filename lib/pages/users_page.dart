@@ -13,6 +13,7 @@ class UsersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final WebService webService = Provider.of<WebService>(context);
+    final users = webService.users;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Prueba de ingreso'),
@@ -26,12 +27,7 @@ class UsersPage extends StatelessWidget {
               icon: const Icon(Icons.search))
         ],
       ),
-      body: ListView.builder(
-        itemCount: webService.users.length,
-        itemBuilder: (context, index) {
-          return UserCard(user: webService.users[index]);
-        },
-      ),
+      body: UserList(users: users),
     );
   }
 }
