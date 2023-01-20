@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:prueba_tecnica_ceiba/models/user.dart';
 import 'package:prueba_tecnica_ceiba/provider/web_service.dart';
-import 'package:prueba_tecnica_ceiba/widgets/user_card.dart';
+import 'package:prueba_tecnica_ceiba/widgets/user_list.dart';
 
 class UserSearchDelegate extends SearchDelegate {
   @override
