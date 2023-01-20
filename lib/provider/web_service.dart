@@ -14,11 +14,15 @@ class WebService extends ChangeNotifier {
   late Box<User> userStorage;
   WebService() {
     _loadUsers();
+
+    isLoading = false;
+    notifyListeners();
   }
 
   Future _loadUsers() async {
     userStorage = Hive.box<User>('users');
     if (userStorage.isEmpty) {
+
       final usersResponse = await http.get(Uri.parse('$_baseUrl/users'));
       if (usersResponse.statusCode == 200) {
         List usersRawList = jsonDecode(usersResponse.body);

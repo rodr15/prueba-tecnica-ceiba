@@ -8,6 +8,10 @@ import 'package:prueba_tecnica_ceiba/provider/web_service.dart';
 Future<void> main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(UserAdapter());
+  Hive.registerAdapter(AddressAdapter());
+  Hive.registerAdapter(GeoAdapter());
+  Hive.registerAdapter(CompanyAdapter());
+
   Box box = await Hive.openBox<User>('users');
   runApp(MultiProvider(
     providers: [
