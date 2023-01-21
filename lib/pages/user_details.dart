@@ -64,6 +64,7 @@ class _PublicationsState extends State<_Publications> {
   Widget build(BuildContext context) {
     return Expanded(
         child: SingleChildScrollView(
+      padding: const EdgeInsets.only(bottom: 20),
       child: ExpansionPanelList(
         elevation: 4,
         expansionCallback: (panelIndex, isExpanded) {
@@ -90,6 +91,7 @@ class _PublicationsState extends State<_Publications> {
                 children: [
                   const Divider(),
                   ListTile(
+                    contentPadding: const EdgeInsets.all(10),
                     title: Text(
                       item.body,
                       textAlign: TextAlign.justify,
