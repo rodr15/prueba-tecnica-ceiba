@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Prueba de Ingreso',
       theme: CustomTheme().customTheme,
       initialRoute: 'Home',

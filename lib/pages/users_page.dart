@@ -27,7 +27,10 @@ class UsersPage extends StatelessWidget {
               icon: const Icon(Icons.search))
         ],
       ),
-      body: SafeArea(child: UserList(users: users)),
+      body: SafeArea(
+          child: webService.isLoading
+              ? const Center(child: CircularProgressIndicator.adaptive())
+              : UserList(users: users)),
     );
   }
 }
