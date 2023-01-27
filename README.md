@@ -1,16 +1,32 @@
-# prueba_tecnica_ceiba
+# Prueba técnica Ceiba
+ 
+ 
+# Descripción de la aplicación 
+ 
+ 
+Aplicación móvil que lista usuarios y sus publicaciones.
+  
+</br>
+# Prerrequisitos 
+ 
+|Fuente                | Versión                        |
+|----------------------|--------------------------------|
+| Sdk Dart             | >=2.17.0 <3.0.0                | 
+| Flutter compilación  | Flutter (Channel stable, 3.0.5)|  
 
-Prueba técnica Ceiba Software
+</br>
+# Ejecución de la aplicación 
+ 
+1. Validar la versión utilizada del SDK Dart y flutter.
+ 
+2. En la terminal del proyecto, ejecutar el siguiente comando para la descarga de paquetes.
 
-## Getting Started
+    ```
+    flutter pub get 
+    ```
 
-This project is a starting point for a Flutter application.
+3. Ejecutar el siguiente comando para correr el proyecto en local.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    ```
+    flutter run
+    ```
